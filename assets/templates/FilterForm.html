@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<div class="container p-3 my-3 bg-dark text-white">
+  <h1>Filter Employee Profile</h1>
+
+  <form action="{% url 'FilterTeacherProfile' %}" method="post">
+      {% csrf_token %}
+  <div class="form-group">
+    <label for="filtertext">Employees to be filtered by first letter of last name or by subject:</label>
+    <input type="text" class="form-control" name="filtertext" placeholder="Last Name or Subject Name" id="filtertext">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+  {% if messages %}
+     {% for message in messages %}
+       <font color='GREEN'> {{ message }}</font>
+     {% endfor %}
+  {% endif %}
+</div>
+
+<div class="container p-3 my-3 bg-primary text-white">
+  <h1>Results</h1>
+  <p>
+       <table border="2px" class="table table-hover">
+                    <thead>
+                    <tr class="table-danger">
+                        <th scope="col">S.No</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email Address</th>
+                        <th scope="col">Get Profile</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                    <tr scope="row" style="color: BLUE; background-color: White">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.FirstName }}</td>
+                        <td>{{ i.LastName }}</td>
+                        <td>{{ i.EmailAddress }}</td>
+                        <td><a class="btn btn-primary pull-right" href="/GetProfilePage/?uid={{ i.id }}" style="color: DARKBLUE">Profile page</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+  </p>
+</div>
+{% endblock %}

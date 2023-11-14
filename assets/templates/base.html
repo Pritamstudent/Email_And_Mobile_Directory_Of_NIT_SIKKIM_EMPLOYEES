@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>NIT SIKKIM Employee Email and Mobile Directory</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Include Particle.js Library -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body style="background-color: #222; color: white;">
+<style>
+  /* Background Animation */
+  body {
+    position: relative;
+  }
+  .background-animation {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    animation: gradient-animation 10s linear infinite;
+  }
+  @keyframes gradient-animation {
+    0% {
+      background: linear-gradient(45deg, #ff6666, #ff9933, #ff6666, #ff9933);
+      background-size: 400% 400%;
+      background-position: 100% 0;
+    }
+    100% {
+      background: linear-gradient(45deg, #ff6666, #ff9933, #ff6666, #ff9933);
+      background-size: 400% 400%;
+      background-position: 0 100%;
+    }
+  }
+
+  /* Text and Button Styles */
+  .container {
+    background-color: rgba(163, 199, 199, 0.8);
+    text-align: center;
+    padding-bottom: 0%;
+  }
+  h1 {
+    font-size: 36px;
+    margin-top: 10px;
+    color: white; /* Set text color to white */
+  }
+  .col a {
+    font-size: 20px;
+  }
+</style>
+
+<!-- Particle Animation Container -->
+<div id="background-animation" class="background-animation"></div>
+
+<div class="container p-3 my-3 border">
+  <h1>NIT SIKKIM Employee Email and Mobile Directory</h1>
+  <div class="row">
+    <div class="col bg-success">
+      <a href="{% url 'index' %}" class="btn btn-primary">Login</a>
+    </div>
+    <div class="col bg-success">
+      <a href="{% url 'TeacherDirectoryForm' %}" class="btn btn-primary">Directory</a>
+    </div>
+  </div>
+</div>
+
+{%block contents%}
+{%endblock%}
+
+<!-- Particle Animation Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    particlesJS('background-animation', {
+      particles: {
+        // Customize particle parameters here
+      },
+      interactivity: {
+        // Customize interactivity options here
+      },
+      retina_detect: true
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<style>
+  .container-bg {
+    background-color: aqua;
+    transition: background-color 0.5s ease-in-out;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .container-bg:hover {
+    background-color: lightblue; /* Change the background color on hover */
+    transform: scale(1.05); /* Scale up on hover */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Add a stronger box-shadow on hover */
+  }
+</style>
+
+<div class="container p-3 my-3 bg-dark text-white container-bg">
+  <h1>Administrative Login</h1>
+  <form action="{% url 'LoginCheck' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="user">Username:</label>
+      <input type="user" class="form-control" name="username" placeholder="Enter User name" id="user">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" name="password" placeholder="Enter password" id="pwd">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  {% if messages %}
+    {% for message in messages %}
+    <font color='GREEN'>{{ message }}</font>
+    {% endfor %}
+  {% endif %}
+</div>
+
+{% endblock %}

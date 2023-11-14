@@ -1,0 +1,75 @@
+{% extends 'appbase.html' %}
+
+{% block contents %}
+<div class="container p-3 my-3 bg-dark text-white">
+  <h1>List Of Employees</h1>
+  <table border="2px" class="table table-hover">
+    <thead>
+      <tr class="table-danger">
+        <th scope="col">S.No</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email Address</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Department</th>
+        <th scope="col">Research Interest</th>
+        <th scope="col">Profile Pic</th>
+        <th scope="col">Actions</th> <!-- Add a header for actions -->
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in data %}
+      <tr scope="row" style=" background-color: white">
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.FirstName }}</td>
+        <td>{{ i.LastName }}</td>
+        <td>{{ i.EmailAddress }}</td>
+        <td>{{ i.PhoneNumber }}</td>
+        <td>{{ i.RoomNumber }}</td>
+        <td>{{ i.Subjectstaught }}</td>
+        <td><img src="{{ i.Profilepicture.url }}" width="45" height="40"></td>
+
+        <td>
+          <a href="{% url 'get_profile' i.id %}" class="btn btn-primary btn-block">View Profile</a>
+          <a href="{% url 'update_teacher' i.id %}" class="btn btn-warning btn-block">Edit</a>
+          <a href="{% url 'delete_teacher' i.id %}" class="btn btn-danger btn-block">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  /* Override Bootstrap button styles */
+  .btn-primary {
+    background-color: green; /* Change the background color to green */
+    border-color: green; /* Change the border color to green */
+  }
+
+  .btn-primary:hover {
+    background-color: darkgreen; /* Change the background color on hover */
+    border-color: darkgreen; /* Change the border color on hover */
+  }
+
+  .btn-warning {
+    background-color: orange; /* Change the background color to orange */
+    border-color: orange; /* Change the border color to orange */
+  }
+
+  .btn-warning:hover {
+    background-color: darkorange; /* Change the background color on hover */
+    border-color: darkorange; /* Change the border color on hover */
+  }
+
+  .btn-danger {
+    background-color: red; /* Change the background color to red */
+    border-color: red; /* Change the border color to red */
+  }
+
+  .btn-danger:hover {
+    background-color: darkred; /* Change the background color on hover */
+    border-color: darkred; /* Change the border color on hover */
+  }
+</style>
+{% endblock %}

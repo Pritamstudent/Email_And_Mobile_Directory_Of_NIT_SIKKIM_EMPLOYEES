@@ -1,0 +1,88 @@
+{% extends 'appbase.html' %}
+{% block contents %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+/* Custom styling for the image input */
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 2px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">Edit Teacher Profile</h2>
+
+<div class="card" style = "color:rgb(4, 9, 9)">
+    <form action="{% url 'update_teacher' teacher.id %}" method="post" style="width: 100%" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h4>Profile Picture:</h4>
+        <img src="{{ teacher.Profilepicture.url }}" alt="{{ teacher.FirstName }} {{ teacher.LastName }}" style="width: 100px;">
+        <label for="profile-picture" class="custom-file-upload">
+          <i class="fa fa-cloud-upload"></i> Choose Image
+        </label>
+        <input type="file" id="profile-picture" name="profilepicture" accept="image/*">
+        <br>
+        <h4>First Name: <span class="text-primary"><input type="text" name="firstName" value="{{ teacher.FirstName }}" required></span></h4>
+        <h4>Last Name: <span class="text-primary"><input type="text" name="lastName" value="{{ teacher.LastName }}" required></span></h4>
+        <h4>Email Address: <span class="text-primary"><input type="email" name="email" value="{{ teacher.EmailAddress }}" required></span></h4>
+        <h4>Phone Number: <span class="text-primary"><input type="text" name="mobile" value="{{ teacher.PhoneNumber }}" required></span></h4>
+        <h4>Department: <span class="text-primary"><input type="text" name="roomnumber" value="{{ teacher.RoomNumber }}" required></span></h4>
+        
+        <p class="title text-danger">
+            <span class="text-sm">Research Interest / Job type for non-academic(,)</span><textarea name="subjects" required>{{ teacher.Subjectstaught }}</textarea>
+        </p>
+
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+</body>
+</html>
+{%endblock%}

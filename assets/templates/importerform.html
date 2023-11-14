@@ -1,0 +1,18 @@
+{%extends 'appbase.html'%}
+
+{%block contents%}
+
+<div class="container p-3 my-3 bg-dark text-white">
+  <h1>Import the data</h1>
+<p>An Importer will be needed to allow Teachers details to be added to the system in bulk. This should
+be secure so only logged in users can run the importer.</p>
+
+  <h2>Click here <a href="{%url 'importBulk'%}"><button type="submit" class="btn btn-primary">Import</button></a> </h2>
+ {% if messages %}
+     {% for message in messages %}
+       <font color='PINK'> {{ message }}</font>
+     {% endfor %}
+  {% endif %}
+
+</div>
+{%endblock%}

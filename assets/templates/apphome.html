@@ -1,0 +1,114 @@
+{% extends 'appbase.html' %}
+
+{% block contents %}
+<div class="container p-3 my-3 bg-white text-blue" style="text-align:center">
+  <h1 style="color: blue;">Employee Email and Contact Number Directory For NIT Sikkim Employees</h1>
+
+</div>
+
+<style>
+  .flip-card {
+    background-color: transparent;
+    width: 100%;
+    perspective: 1000px;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+  .card-back {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    padding: 20px;
+  }
+
+  .card-front {
+    background-color: #3498db;
+  }
+
+  .flip-card:hover .card-front {
+    background-color: #e74c3c; /* Change background color on hover */
+  }
+
+  .card-back {
+    background-color: #e74c3c;
+    transform: rotateY(180deg);
+  }
+
+  .flip-card:hover .card-back {
+    background-color: #27ae60; /* Change background color on hover */
+  }
+
+  .card-title {
+    color: #fff;
+  }
+
+  .card-text {
+    color: #fff;
+  }
+</style>
+
+<script>
+  // JavaScript goes here, if needed
+</script>
+
+<div class="container p-3 my-3 bg-white text-blue">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="card flip-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-body">
+              <h5 class="card-title">Welcome to the Directory</h5>
+              <p class="card-text">
+                Welcome to the Employee Mobile and Email Directory of the National Institute of Technology Sikkim. This directory provides a comprehensive list of our dedicated faculty and staff members, making it easier for you to get in touch with them.
+              </p>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-body">
+              <h5 class="card-title">Welcome to the Directory</h5>
+              <p class="card-text">
+                Whether you're a student looking for academic guidance, a colleague collaborating on a project, or a visitor interested in connecting with our team, this directory will help you find the contact information you need.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class ="card flip-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-body">
+              <h5 class="card-title">Find a Specific Employee</h5>
+              <p class="card-text">
+                To find a specific employee, simply use the search feature above to filter the directory by name or department. You can also browse the complete list to discover more about our talented professionals.
+              </p>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-body">
+              <h5 class="card-title">Find a Specific Employee</h5>
+              <p class="card-text">
+                We hope that this directory proves to be a valuable resource for the NIT Sikkim community and beyond. For any updates or corrections to the directory information, please contact our administrative office.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
