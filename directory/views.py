@@ -171,6 +171,7 @@ def EditTeacher(request, id):
     if request.method == 'POST':
         form_data = request.POST
         # Validate the form data and handle any errors
+
         # Update the teacher's information
         teacher.FirstName = form_data['firstName']
         teacher.LastName = form_data['lastName']
@@ -178,10 +179,13 @@ def EditTeacher(request, id):
         teacher.PhoneNumber = form_data['mobile']
         teacher.RoomNumber = form_data['roomnumber']
         teacher.Subjectstaught = form_data['subjects']
-        teacher.Profilepicture = request.FILES['profilepicture']
+
+        # Check if a new image has been provided
+        if 'profilepicture' in request.FILES:
+            teacher.Profilepicture = request.FILES['profilepicture']
 
         teacher.save()
         qs = TeacherModel.objects.all()
-        return render(request, 'AllData.html', {'data': qs})# Redirect to the teacher directory page after updating
+        return render(request, 'AllData.html', {'data': qs})  # Redirect to the teacher directory page after updating
 
     return render(request, 'update_teacher.html', {'teacher': teacher})

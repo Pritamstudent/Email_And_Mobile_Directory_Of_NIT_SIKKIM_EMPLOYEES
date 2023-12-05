@@ -1,64 +1,104 @@
-<!-- AddTeacherData.html -->
 {% extends 'appbase.html' %}
 {% block contents %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    .card {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      max-width: 300px;
-      margin: auto;
-      text-align: center;
-      font-family: arial;
-    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-    .title {
-      color: grey;
-      font-size: 18px;
-    }
+        /* Card Styling */
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
 
-    button {
-      border: none;
-      outline: 0;
-      display: inline-block;
-      padding: 8px;
-      color: white;
-      background-color: #000;
-      text-align: center;
-      cursor: pointer;
-      width: 100%;
-      font-size: 18px;
-    }
+        /* Title Styling */
+        h2 {
+            text-align: center;
+            color: #333;
+        }
 
-    a {
-      text-decoration: none;
-      font-size: 22px;
-      color: black;
-    }
+        /* Input Styling */
+        h4 {
+            margin-bottom: 10px;
+            color: #555;
+        }
 
-    button:hover, a:hover {
-      opacity: 0.7;
-    }
-  </style>
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+
+        /* File Input Styling */
+        input[type="file"] {
+            display: none;
+        }
+
+        label {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #000;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
 
-<h2 style="text-align:center">Add Teacher Profile</h2>
+<h2>Add Teacher Profile</h2>
 
-<div class="card" style="color:black">
-   <form method="post" enctype="multipart/form-data">
-       {% csrf_token %}
-       <h4>First Name: <input type="text" name="FirstName" required></h4>
-       <h4>Last Name: <input type="text" name="LastName" required></h4>
-       <h4>Email Address: <input type="email" name="EmailAddress" required></h4>
-       <h4>Phone Number: <input type="text" name="PhoneNumber" required></h4>
-       <h4>Department: <input type="text" name="RoomNumber" required></h4>
-       <h4>Profile Picture: <input type="file" name="Profilepicture" accept="image/*"></h4>
-       <h4>Subjects Taught: <input type="text" name="Subjectstaught" required></h4>
-       <button type="submit">Add Profile</button>
-   </form>
+<div class="card">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h4>First Name: <input type="text" name="FirstName" required></h4>
+        <h4>Last Name: <input type="text" name="LastName" required></h4>
+        <h4>Email Address: <input type="email" name="EmailAddress" required></h4>
+        <h4>Phone Number: <input type="text" name="PhoneNumber" required></h4>
+        <h4>Department: <input type="text" name="RoomNumber" required></h4>
+        <h4>Profile Picture: <label for="profile-picture" class="custom-file-upload">
+          <i class="fa fa-cloud-upload"></i> Choose Image
+        </label>
+        <input type="file" id="profile-picture" name="Profilepicture" accept="image/*"></h4>
+        
+        <h4>Subjects Taught: <input type="text" name="Subjectstaught" required></h4>
+        <button type="submit">Add Profile</button>
+    </form>
 </div>
 
 </body>

@@ -1,89 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>NIT SIKKIM Employee Email and Mobile Directory</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <!-- Include Particle.js Library -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<head>
+    <title>NIT SIKKIM Employee Email and Mobile Directory</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Include Particle.js Library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
+
 <body style="background-color: #222; color: white;">
-<style>
-  /* Background Animation */
-  body {
+
+    <!-- Particle Animation Container -->
+    <div id="background-animation" class="background-animation"></div>
+
+    <div class="container p-3 my-3 border">
+        <h1>NIT SIKKIM Employee Email and Mobile Directory</h1>
+        <div class="row">
+            <div class="col bg-success">
+                <a href="{% url 'index' %}" class="btn btn-primary">Login</a>
+            </div>
+            <div class="col bg-success">
+                <a href="{% url 'TeacherDirectoryForm' %}" class="btn btn-primary">Directory</a>
+            </div>
+        </div>
+    </div>
+
+    {% block contents %}
+    {% load static %}
+
+    {% endblock %}
+
+    <script>
+        let rotation = 0;
+
+        function rotate() {
+            document.documentElement.style.setProperty('--rotation', rotation++ + 'deg');
+            requestAnimationFrame(rotate);
+        }
+
+        requestAnimationFrame(rotate);
+    </script>
+
+    <style>
+      /* Background Animation */
+   /* Background Animation */
+/* Background Animation */
+body {
     position: relative;
-  }
-  .background-animation {
+    margin: 0;
+    padding: 0;
+}
+
+.background-animation {
     position: fixed;
     width: 100%;
     height: 100%;
     z-index: -1;
-    animation: gradient-animation 10s linear infinite;
-  }
-  @keyframes gradient-animation {
-    0% {
-      background: linear-gradient(45deg, #ff6666, #ff9933, #ff6666, #ff9933);
-      background-size: 400% 400%;
-      background-position: 100% 0;
-    }
-    100% {
-      background: linear-gradient(45deg, #ff6666, #ff9933, #ff6666, #ff9933);
-      background-size: 400% 400%;
-      background-position: 0 100%;
-    }
-  }
+    animation: gradient-animation 10s linear infinite, rotate-animation 5s linear infinite;
+    background-image: url('{% static "nit.jpg" %}'); /* Adjust the path based on your project structure */
+    background-size: contain; /* Adjust the size property as needed */
+    background-repeat: no-repeat;
+    background-position: center center; /* Adjust the position property as needed */
+    opacity: 0.7; /* Adjust the opacity value as needed (0 to 1) */
+}
 
-  /* Text and Button Styles */
-  .container {
+@keyframes gradient-animation {
+    0% {
+        background-size: 100% 100%; /* Adjust the size property as needed */
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-size: 100% 100%; /* Adjust the size property as needed */
+        background-position: 0 100%;
+    }
+}
+
+@keyframes rotate-animation {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
+}
+
+/* Text and Button Styles */
+.container {
     background-color: rgba(163, 199, 199, 0.8);
     text-align: center;
     padding-bottom: 0%;
-  }
-  h1 {
+}
+
+h1 {
     font-size: 36px;
     margin-top: 10px;
     color: white; /* Set text color to white */
-  }
-  .col a {
+}
+
+.col a {
     font-size: 20px;
-  }
-</style>
+}
 
-<!-- Particle Animation Container -->
-<div id="background-animation" class="background-animation"></div>
 
-<div class="container p-3 my-3 border">
-  <h1>NIT SIKKIM Employee Email and Mobile Directory</h1>
-  <div class="row">
-    <div class="col bg-success">
-      <a href="{% url 'index' %}" class="btn btn-primary">Login</a>
-    </div>
-    <div class="col bg-success">
-      <a href="{% url 'TeacherDirectoryForm' %}" class="btn btn-primary">Directory</a>
-    </div>
-  </div>
-</div>
+  </style>
+  
+  
 
-{%block contents%}
-{%endblock%}
-
-<!-- Particle Animation Script -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    particlesJS('background-animation', {
-      particles: {
-        // Customize particle parameters here
-      },
-      interactivity: {
-        // Customize interactivity options here
-      },
-      retina_detect: true
-    });
-  });
-</script>
 </body>
+
 </html>
